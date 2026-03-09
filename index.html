@@ -3,30 +3,121 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HBD TEH GELAS :)</title>
+<title>HBD TEH GELAS:)</title>
+
 <style>
-/* CSS tetap sama seperti sebelumnya agar tampilan tetap cantik */
-*{ margin:0; padding:0; box-sizing:border-box; font-family: 'Segoe UI', sans-serif; }
-body{ height:100vh; display:flex; justify-content:center; align-items:center; background:linear-gradient(135deg,#ff7eb3,#ff758c); overflow:hidden; text-align:center; color:white; }
-canvas{ position:fixed; top:0; left:0; width: 100%; height: 100%; z-index: -1; pointer-events: none; }
-.start, .content{ z-index: 10; }
-.bouquet{ font-size:120px; animation:float 3s infinite ease-in-out; }
-.envelope{ font-size:70px; cursor:pointer; transition: 0.3s; }
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:linear-gradient(135deg,#ff7eb3,#ff758c);
+overflow:hidden;
+text-align:center;
+color:white;
+}
+
+canvas{
+position:fixed;
+top:0;
+left:0;
+width: 100%;
+height: 100%;
+z-index: -1; 
+pointer-events: none;
+}
+
+.start{
+display:flex;
+flex-direction:column;
+align-items:center;
+gap:20px;
+z-index: 10;
+}
+
+.bouquet{
+font-size:120px;
+animation:float 3s infinite ease-in-out;
+}
+
+.envelope{
+font-size:70px;
+cursor:pointer;
+transition: transform 0.3s;
+}
+
 .envelope:hover{ transform:scale(1.2); }
-@keyframes float{ 0%, 100%{transform:translateY(0)} 50%{transform:translateY(-20px)} }
-.content{ display:none; max-width:600px; width: 90%; padding:30px; background:rgba(255,255,255,0.15); backdrop-filter:blur(10px); border-radius:20px; }
-button{ margin-top:20px; padding:12px 25px; border:none; border-radius:25px; background:white; color:#ff4b7d; font-weight:bold; cursor:pointer; }
-.letter{ display:none; margin-top:20px; line-height:1.6; text-align: left; background: rgba(0,0,0,0.05); padding: 15px; border-radius: 10px; }
-.heart{ position:absolute; font-size:20px; z-index: 1; animation:heartFloat 6s linear infinite; }
-@keyframes heartFloat{ 0%{transform:translateY(100vh); opacity:1} 100%{transform:translateY(-10vh); opacity:0} }
+
+@keyframes float{
+0%, 100%{transform:translateY(0)}
+50%{transform:translateY(-20px)}
+}
+
+.content{
+display:none;
+max-width:600px;
+width: 90%;
+padding:30px;
+background:rgba(255,255,255,0.15);
+backdrop-filter:blur(10px);
+border-radius:20px;
+box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+z-index: 10;
+}
+
+h1{ font-size: 2.2rem; margin-bottom: 10px; }
+h2{ font-size: 1.8rem; margin-bottom: 15px; color: #ffe0e6;}
+
+button{
+margin-top:20px;
+padding:12px 25px;
+border:none;
+border-radius:25px;
+background:white;
+color:#ff4b7d;
+font-weight:bold;
+cursor:pointer;
+transition: 0.3s;
+}
+
+.letter{
+display:none;
+margin-top:20px;
+line-height:1.6;
+text-align: left;
+background: rgba(0,0,0,0.05);
+padding: 15px;
+border-radius: 10px;
+}
+
+.heart{
+position:absolute;
+font-size:20px;
+z-index: 1;
+animation:heartFloat 6s linear infinite;
+}
+
+@keyframes heartFloat{
+0%{transform:translateY(100vh); opacity:1}
+100%{transform:translateY(-10vh); opacity:0}
+}
 </style>
 </head>
+
 <body>
 
 <canvas id="fireworks"></canvas>
 
 <div class="start" id="start">
     <div class="bouquet">💐</div>
+    <p>Ada pesan buat kamu!</p>
     <p>Klik suratnya untuk membuka</p>
     <div class="envelope" onclick="openLetter()">✉️</div>
 </div>
@@ -35,18 +126,22 @@ button{ margin-top:20px; padding:12px 25px; border:none; border-radius:25px; bac
     <h1>🎂 Happy Birthday</h1>
     <h2>Yulita ❤️</h2>
     <p>Selamat ulang tahun buat <b>Tehgelas ☕</b></p>
+
     <button id="btnBuka" onclick="showLetter()">Buka Surat 💌</button>
+
     <div class="letter" id="letter">
-        <p>Ciee, makin tua aja udh kepala dua kwkkwk,<br><br>
-        Semoga di umur yang bertambah ini diberikan IPK yang bertambah tinggi, 
+        <p>
+        ciee makin tua aja udh kepala dua kwkkwk,<br><br>
+        semoga di umur yang bertambah ini diberikan ipk yang bertambah tinggi, 
         diberikan kekuatan dan kebahagian buat menjalani perkuliahan hingga 
         mendapatkan tambahan dibelakang nama nanti biar ga satu kata lagi.<br><br>
-        Trus semoga Om Burhan diberikan kesehatan dan mendapatkan hidayah 
-        buat baik ke anak-anaknya. Amin!</p>
+        trus semoga om burhan diberikan kesehatan dan mendaptkan hidayah 
+        buat baik ke anak"nya. Amin!
+        </p>
     </div>
 
     <audio id="music" loop>
-        <source src="http://googleusercontent.com/file_content/0" type="audio/mpeg">
+        <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_1456a646ac.mp3" type="audio/mpeg">
     </audio>
 </div>
 
@@ -61,22 +156,67 @@ function openLetter(){
 }
 
 function showLetter(){
+    // Menampilkan isi surat
     document.getElementById("letter").style.display="block";
+    // MENYEMBUNYIKAN TOMBOL
     document.getElementById("btnBuka").style.display="none";
     
-    // Putar lagu Jamrud
-    music.play().catch(e => console.log("Autoplay diblokir:", e));
+    // MENYALAKAN MUSIK (Setelah ada interaksi klik tombol)
+    music.play().catch(error => {
+        console.log("Musik gagal diputar karena kebijakan browser.");
+    });
 }
 
-/* --- Script Animasi tetap sama --- */
-function createHearts(){ setInterval(()=>{ let h=document.createElement("div"); h.className="heart"; h.innerHTML="❤️"; h.style.left=Math.random()*100+"vw"; document.body.appendChild(h); setTimeout(()=>h.remove(),6000) },500) }
+function createHearts(){
+    setInterval(()=>{
+        let heart=document.createElement("div");
+        heart.className="heart";
+        heart.innerHTML="❤️";
+        heart.style.left=Math.random()*100+"vw";
+        document.body.appendChild(heart);
+        setTimeout(()=>{ heart.remove() },6000)
+    },500)
+}
+
+/* --- Animasi Kembang Api --- */
 const canvas=document.getElementById("fireworks");
 const ctx=canvas.getContext("2d");
-canvas.width=window.innerWidth; canvas.height=window.innerHeight;
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
 let particles=[];
-function createFireworks(){ setInterval(()=>{ let x=Math.random()*canvas.width; let y=Math.random()*canvas.height/2; let c=`hsl(${Math.random()*360}, 100%, 70%)`; for(let i=0;i<60;i++){ particles.push({x:x, y:y, vx:(Math.random()-0.5)*8, vy:(Math.random()-0.5)*8, alpha:1, color:c}) } },900) }
-function animate(){ requestAnimationFrame(animate); ctx.clearRect(0,0,canvas.width,canvas.height); particles.forEach((p,i)=>{ p.x+=p.vx; p.y+=p.vy; p.alpha-=0.015; ctx.fillStyle=p.color; ctx.globalAlpha=p.alpha; ctx.beginPath(); ctx.arc(p.x,p.y,2.5,0,Math.PI*2); ctx.fill(); if(p.alpha<=0) particles.splice(i,1) }) }
+
+function createFireworks(){
+    setInterval(()=>{
+        let x=Math.random()*canvas.width;
+        let y=Math.random()*canvas.height/2;
+        let color = `hsl(${Math.random() * 360}, 100%, 70%)`;
+        for(let i=0;i<60;i++){
+            particles.push({
+                x:x, y:y,
+                vx:(Math.random()-0.5)*8,
+                vy:(Math.random()-0.5)*8,
+                alpha:1,
+                color: color
+            })
+        }
+    },900)
+}
+
+function animate(){
+    requestAnimationFrame(animate);
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    particles.forEach((p,i)=>{
+        p.x+=p.vx; p.y+=p.vy; p.alpha-=0.015;
+        ctx.fillStyle=p.color;
+        ctx.globalAlpha = p.alpha;
+        ctx.beginPath();
+        ctx.arc(p.x,p.y,2.5,0,Math.PI*2);
+        ctx.fill();
+        if(p.alpha<=0){ particles.splice(i,1) }
+    })
+}
 animate();
 </script>
+
 </body>
 </html>
